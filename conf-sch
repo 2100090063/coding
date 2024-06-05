@@ -1,0 +1,20 @@
+def maxPresentations(scheduleStart, scheduleEnd):
+    presentations = sorted(zip(scheduleStart, scheduleEnd), key=lambda x: x[1])
+    count = 0
+    last_end_time = 0
+    
+    for start, end in presentations:
+        if start >= last_end_time:
+            count += 1
+            last_end_time = end
+            
+    return count
+
+if __name__ == "__main__":
+    n = int(input())
+    
+    scheduleStart = [int(input()) for _ in range(n)]
+    scheduleEnd = [int(input()) for _ in range(n)]
+    
+    result = maxPresentations(scheduleStart, scheduleEnd)
+    print(result)
